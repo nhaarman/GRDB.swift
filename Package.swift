@@ -17,7 +17,6 @@ let package = Package(
     ],
     dependencies: [
         .package(
-            name: "Domain-iOS",
             url: "git@github.com:MoveLab-Studio/Domain-iOS.git",
             branch: "main"
         )
