@@ -16,6 +16,11 @@ let package = Package(
         .library(name: "GRDB-dynamic", type: .dynamic, targets: ["GRDB"]),
     ],
     dependencies: [
+        .package(
+            name: "Domain-iOS",
+            url: "git@github.com:MoveLab-Studio/Domain-iOS.git",
+            branch: "main"
+        )
     ],
     targets: [
         .systemLibrary(
@@ -23,7 +28,7 @@ let package = Package(
             providers: [.apt(["libsqlite3-dev"])]),
         .target(
             name: "GRDB",
-            dependencies: ["CSQLite"],
+            dependencies: ["CSQLite", .product(name: "Cancellation", package: "Domain-iOS")],
             path: "GRDB"),
         .testTarget(
             name: "GRDBTests",
